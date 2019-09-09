@@ -10,7 +10,7 @@ Implement deployment of 3 tier application, which would run on Ubuntu server 18.
 ```
 ybil@test:~$ cat /etc/netplan/50-cloud-init.yaml 
 
-## As amazon reserved ip adresses 10.0.0.2 for DNS service we will use range of 100.0.0.2/18 for static IP adress and 100.0.0.1/18 for gateway
+## As amazon reserved ip adresses 10.0.0.2 for DNS service we will use 100.0.0.2/18 for static IP adress and 100.0.0.1/18 for gateway
 
 # This file is generated from information provided by
 # the datasource.  Changes to it will not persist across an instance.
