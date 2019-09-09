@@ -14,7 +14,7 @@ case  "$1" in
 
 start)
 
-spawn-fcgi -d /var/www/testAPP/hello-app/dynamic -f /var/www/testAPP/hello-app/dynamic/index.py -a 127.0.0.1 -p 9002
+spawn-fcgi -d /var/www/testAPP/test-master/hello-app/dynamic -f /var/www/testAPP/test-master/hello-app/dynamic/index.py -a 127.0.0.1 -p 9002
 ;;
 
 stop)
@@ -26,7 +26,7 @@ restart)
 
 kill "${pid}"
 sleep 5
-spawn-fcgi -d /var/www/testAPP/hello-app/dynamic -f /var/www/testAPP/hello-app/dynamic/index.py -a 127.0.0.1 -p 9002
+spawn-fcgi -d /var/www/testAPP/test-master/hello-app/dynamic -f /var/www/testAPP/test-master/hello-app/dynamic/index.py -a 127.0.0.1 -p 9002
 ;;
 
 *)
