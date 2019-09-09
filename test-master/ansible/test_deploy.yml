@@ -14,9 +14,10 @@
     raw: apt-get update && apt-get -y install python
     when: check_python.rc != 0
 
-  - name: Ensure apt cache is up to date
+  - name: Check if up to date
     apt: update_cache=yes
-  - name: Ensure packages are installed
+    
+  - name: Check if packages are installed
     apt: name={{item}}
     with_items:
         - postgresql
@@ -38,21 +39,15 @@
   vars:
     dbname: testdb
     dbuser: testuser
-    dbpassword: testsupersecretpassword
+    dbpassword: testpassword
     encrypted: yes
 
   tasks:
-  - name: Ensure database is created
+  - name: Check that database is created
     postgresql_db: name={{dbname}}
 
-  - name: Ensure user has access to database
+  - name: Check that user has access to database
     postgresql_user: db={{dbname}} name={{dbuser}} password={{dbpassword}} encrypted={{encrypted}} priv=ALL
-
-  - name: Ensure user does not have unnecessary privilege
-    postgresql_user: name={{dbuser}} role_attr_flags=NOSUPERUSER,NOCREATEDB
-  
-  - name: Ensure no other user can access the database
-    postgresql_privs: db={{dbname}} role=PUBLIC type=database priv=ALL state=absent
 
 - hosts: test
   become: yes
@@ -77,14 +72,14 @@
 
     - name: Clone git repo
       git:
-        repo: 'https://github.com/ybil/test.git'
-        dest: /var/www/test
+        repo: 'https://github.com/ybil/testAPP.git'
+        dest: /var/www/testAPP
         version: master
         force: yes
    
     - name: Add exec permmisions to index.py
       file:
-        path: /var/www/test/hello-app/dynamic/index.py
+        path: /var/www/testAPP/test-master/hello-app/dynamic/index.py
         mode: 0755
 
     - name: Copy and add exec permissions to fcgi init-script
