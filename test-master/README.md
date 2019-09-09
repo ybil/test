@@ -1,6 +1,6 @@
 # Tasks:
 Implement deployment of 3 tier application, which would run on Ubuntu server 18.04 LTS, would use Nginx, Postgres and Python code in consitent and repeatable way. You would need to automate deployment of:
-1. Setup use of 10.0.0.2/18 static IP address, Netmask 255.255.0.0, gateway 10.0.0.1/182.    
+1. Setup use of 10.0.0.2/18 static IP address, Netmask 255.255.0.0, gateway 10.0.0.1/18.    
 2. Install Nginx, configure it to serve static pages and dynamic pages via FCGI (python application)
 3. Install PostgreSQL DBMS and create DB, user for DB, set users password.
 4. Install simple Python application which would serve "Hello World!" via FCGI.
@@ -9,6 +9,9 @@ Implement deployment of 3 tier application, which would run on Ubuntu server 18.
 ## Network configuration on the target machine:
 ```
 ybil@test:~$ cat /etc/netplan/50-cloud-init.yaml 
+
+## As amazon reserved ip adresses 10.0.0.2 for DNS service we will use range of 100.0.0.2/18 for static IP adress and 100.0.0.1/18 for gateway
+
 # This file is generated from information provided by
 # the datasource.  Changes to it will not persist across an instance.
 # To disable cloud-init's network configuration capabilities, write a file
@@ -18,11 +21,11 @@ network:
     ethernets:
         ens160:
             addresses:
-            - 10.0.0.2/18
-            gateway4: 10.0.0.1
+            - 100.0.0.2/18
+            gateway4: 100.0.0.1
             nameservers:
                 addresses:
-                - 10.0.0.1
+                - 100.0.0.1
     version: 2
 ybil@test:~$ sudo netplan apply
 ```
@@ -40,7 +43,7 @@ git clone https://github.com/ybil/test.git
 2. Generate SSH key-pair and copy public key to the target machine:
 ```
 ssh-keygen -f ~/.ssh/ansible
-ssh -i ~/.ssh/ansible.pub <username>@10.0.0.2
+ssh -i ~/.ssh/ansible.pub <username>@100.0.0.2
 ```
 
 3. Replace `ansible_user parameter` in `hosts` inventory file with name of the user on the target machine.
