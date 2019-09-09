@@ -4,7 +4,7 @@
   gather_facts: no
 
   tasks:
-  - name: Check for Python
+  - name: Check Python
     raw: test -e /usr/bin/python
     changed_when: false
     failed_when: false
