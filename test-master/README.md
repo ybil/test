@@ -38,7 +38,7 @@ ansible 2.0.0.2
 
 1. Clone git repository:
 ```
-git clone https://github.com/ybil/test.git
+git clone https://github.com/ybil/testAPP.git
 ```
 2. Generate SSH key-pair and copy public key to the target machine:
 ```
@@ -60,10 +60,10 @@ ok: [host1]
 TASK [Install Python] **********************************************************
 skipping: [host1]
 
-TASK [Ensure apt cache is up to date] ******************************************
+TASK [Check if up to date] ******************************************
 ok: [host1]
 
-TASK [Ensure packages are installed] *******************************************
+TASK [Check if packages are installed] *******************************************
 ok: [host1] => (item=[u'postgresql', u'nginx', u'spawn-fcgi', u'python-flup', u'python-pip', u'python-psycopg2'])
 
 TASK [Install web.py] **********************************************************
@@ -75,12 +75,6 @@ TASK [Ensure database is created] **********************************************
 ok: [host1]
 
 TASK [Ensure user has access to database] **************************************
-ok: [host1]
-
-TASK [Ensure user does not have unnecessary privilege] *************************
-ok: [host1]
-
-TASK [Ensure no other user can access the database] ****************************
 ok: [host1]
 
 PLAY ***************************************************************************
