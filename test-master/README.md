@@ -115,5 +115,5 @@ changed: [host1]
 PLAY RECAP *********************************************************************
 host1                      : ok=18   changed=2    unreachable=0    failed=0   
 ```
-5. Open pages in browser
+
 
