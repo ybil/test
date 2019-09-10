@@ -54,19 +54,31 @@ SUDO password:
 
 PLAY ***************************************************************************
 
-TASK [Check Python] ********************************************************
+TASK [Install base packages]*************************************************
 ok: [host1]
 
-TASK [Install Python] **********************************************************
-skipping: [host1]
-
-TASK [Check if up to date] ******************************************
+TASK [Check that the /usr/local/bin/python3.6 exists]**********************
 ok: [host1]
 
-TASK [Check if packages are installed] *******************************************
-ok: [host1] => (item=[u'postgresql', u'nginx', u'spawn-fcgi', u'python-flup', u'python-pip', u'python-psycopg2'])
+TASK [Update apt-cache]********************************************************
+ok: [host1]
 
-TASK [Install web.py] **********************************************************
+TASK [Install packages needed for installing Python]***************************
+ok: [host1]
+
+TASK [Extract python 3.6.4 into /tmp]**********************************
+ok: [host1]
+
+TASK [Configure python 3.6.4]***************************************************
+ok: [host1]
+
+TASK [Make]***********************************************************************
+ok: [host1]
+
+TASK [Install Python 3.6.4]*****************************************************
+ok: [host1]
+
+TASK [Remove tmp files used for Python 3.6.4 installation]**************************
 ok: [host1]
 
 PLAY ***************************************************************************
