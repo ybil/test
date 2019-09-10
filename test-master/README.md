@@ -8,7 +8,7 @@ Implement deployment of 3 tier application, which would run on Ubuntu server 18.
 
 ## Network configuration on the target machine:
 ```
-ybil@test:~$ cat /etc/cloud/cloud-init.yaml 
+ubuntu@ec2:~$ cat /etc/cloud/cloud-init.yaml 
 
 ## As amazon reserved ip adresses 10.0.0.2 for DNS service we will use 100.0.0.2/18 for static IP adress and 100.0.0.1/18 for gateway
 
@@ -27,7 +27,7 @@ network:
                 addresses:
                 - 100.0.0.1
     version: 2
-ybil@test:~$ sudo netplan apply
+ubuntu@ec2:~$ sudo netplan apply
 ```
 
 ## Configuration of the target machine using Ansible playbook:
